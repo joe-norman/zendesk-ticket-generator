@@ -93,6 +93,10 @@ dist
 
 # Serverless directories
 .serverless/
+.aws-sam/
+
+# Output of sam package
+packaged.yaml
 
 # FuseBox cache
 .fusebox/

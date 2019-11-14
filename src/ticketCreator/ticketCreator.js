@@ -1,0 +1,33 @@
+/**
+ * A Lambda function that logs the payload received from a CloudWatch scheduled event.
+ */
+
+const axios = require('axios')
+
+exports.handler = async (event, context) => {
+    console.info(JSON.stringify(event));
+    try {
+        const response = await axios({
+            method:"post",
+            url:`https://${process.env.ZenDeskDomain}.com/api/v2/tickets.json`,
+            auth:{
+                username: `${process.env.ZenDeskUsername}/token`,
+                password: process.env.ZenDeskPassword
+            },
+            data: {
+                "ticket": {
+                    "subject": ticket.subject,
+                    "comment": {"body": ticket.description}
+                }
+            }
+        });
+        const results = response.data;
+        return {
+            statusCode: 200,
+            body: results
+        };
+    } catch (err) {
+        console.error(err);
+    }
+    
+}

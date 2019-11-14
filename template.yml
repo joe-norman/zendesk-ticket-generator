@@ -9,9 +9,9 @@ Resources:
   ScheduledEventLogger:
     Type: AWS::Serverless::Function
     Properties:
-      Description: A Lambda function that logs the payload of messages sent to an associated SQS queue.
+      Description: A Lambda function that creates a bulk of fake Zendesk tickets fairly quickly for demos or testing
       Runtime: nodejs10.x
-      Handler: src/handlers/scheduled-event-logger.scheduledEventLoggerHandler
+      Handler: src/ticketCreator/ticketCreator.handler
       Events:
         CloudWatchEvent:
           Type: Schedule
