@@ -27,7 +27,7 @@ exports.handler = async (event) => {
         console.error(err);
     }
 }
-
+m
 function RandomTicket() {
     var min = 0;
     var max = 10;
