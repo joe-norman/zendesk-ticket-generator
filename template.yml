@@ -1,6 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Desciption: >-
-  zendesk-ticket-generator
+Desciption: zendesk-ticket-generator
 
 Transform:
 - AWS::Serverless-2016-10-31
@@ -48,6 +47,7 @@ Resources:
       Description: A Lambda function that creates a bulk of fake Zendesk tickets fairly quickly for demos or testing
       Runtime: nodejs10.x
       Handler: src/ticketCreator/ticketCreator.handler
+      CodeUri: src/ticketCreator
       Events:
         CloudWatchEvent:
           Type: Schedule
@@ -59,6 +59,11 @@ Resources:
           Fn::GetAtt:
             - ZendeskTicketGeneratorLambdaExecutionRole
             - Arn
+      Environment:
+        Variables:
+          ZendeskDomain: !Ref ZendeskDomain
+          ZendeskUserEmail: !Ref ZendeskUserEmail
+          ZendeskAPIKey: !Ref ZendeskAPIKey
   
 ##########################################################################
 #   Roles                                                                #
