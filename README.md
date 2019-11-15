@@ -7,7 +7,7 @@ It creates an AWS Lambda function that makes a new ticket in Zendesk once per mi
 This is intended for use by the author and not meant to be distributed, but you are free to do so if you choose.
 
 ## Deployment
-To deploy this application using the sam cli, follow the following steps:
+To deploy this application using the [sam cli](https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html), follow the following steps:
 
 * Download the repo locally
 * Navigate your cli into the root folder of the repo
