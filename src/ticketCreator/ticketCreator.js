@@ -3,7 +3,7 @@
  */
 
 const axios = require('axios');
-const randomTicket = require('./randomTicket.js');
+const randomTicket = require('./randomTicket.js').default;
 
 exports.handler = async (event, context) => {
     console.info(JSON.stringify(event));

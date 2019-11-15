@@ -5,8 +5,8 @@
 
 var randomTicket = {
     newTicket: function() {
-        const min = 0;
-        const max = 10;
+        var min = 0;
+        var max = 10;
         
         min = Math.ceil(min);
         max = Math.floor(max);
@@ -62,6 +62,6 @@ var randomTicket = {
         }
         return {subject: subject, description: description};
     }
-}
+};
 
-module.export = randomTicket;
+module.exports = randomTicket;
