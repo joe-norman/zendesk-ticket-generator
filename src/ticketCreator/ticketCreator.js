@@ -14,10 +14,10 @@ exports.handler = async (event, context) => {
     try {
         const response = await axios({
             method:"post",
-            url:`https://${process.env.ZenDeskDomain}.com/api/v2/tickets.json`,
+            url:`https://${process.env.ZendeskDomain}.com/api/v2/tickets.json`,
             auth:{
-                username: `${process.env.ZenDeskUsername}/token`,
-                password: process.env.ZenDeskPassword
+                username: `${process.env.ZendeskUserEmail}/token`,
+                password: process.env.ZendeskAPIKey
             },
             data: {
                 "ticket": {

@@ -5,7 +5,43 @@ Desciption: >-
 Transform:
 - AWS::Serverless-2016-10-31
 
-Resources:  
+Metadata:
+  AWS::ServerlessRepo::Application:
+    Name: Zendesk-Ticket-Generator
+    Description: This application uses a Lambda function on a schedule to run every minute and make a random ticket in Zendesk based on a switch statement. It's made for populating demos and tests with tickets.
+    Author: Joe Norman
+    SpdxLicenseId: MIT-0
+    LicenseUrl: LICENSE
+    ReadmeUrl: README.md
+    Labels: ['zendesk', 'ticket']
+    HomePageUrl: https://github.com/joe-norman/zendesk-ticket-generator
+    SemanticVersion: 1.0.0
+    SourceCodeUrl: https://github.com/joe-norman/zendesk-ticket-generator
+
+
+Parameters:
+#######################################################
+# Lambda Environment Variables
+#######################################################
+  ZendeskDomain:
+    Description: Your Zendesk domain, without the 'https://' or '.com'. Example - mydomain.zendesk
+    Type: String
+    Default: ''
+  ZendeskUserEmail:
+    Description: Eemail address of the agent that will be making the API calls. Probably should be a service account. Must exist in your Zendesk tenant with appropriate rights.
+    Type: String
+    Default: ''
+  ZendeskAPIKey:
+    Description: API key generated in the Zendesk admin console. The Lambda function will use this to make API calls to make Zendesk tickets.
+    Type: String
+    Default: ''
+
+
+
+Resources:
+#######################################################
+# Lambda Functions
+#######################################################  
   ScheduledEventLogger:
     Type: AWS::Serverless::Function
     Properties:
@@ -19,3 +55,24 @@ Resources:
             Schedule: rate(1 minute)
       MemorySize: 128
       Timeout: 100
+      Role:
+          Fn::GetAtt:
+            - ZendeskTicketGeneratorLambdaExecutionRole
+            - Arn
+  
+##########################################################################
+#   Roles                                                                #
+##########################################################################   
+    ZendeskTicketGeneratorLambdaExecutionRole:
+        Description: Creating service role in IAM for AWS Lambda
+        Type: AWS::IAM::Role
+        Properties:
+          RoleName: 'ZendeskTicketGeneratorLambdaExecutionRole'
+          AssumeRolePolicyDocument:
+            Statement:
+            - Effect: Allow
+              Principal:
+                Service: [lambda.amazonaws.com]
+              Action: sts:AssumeRole
+          ManagedPolicyArns:
+            - !Sub 'arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
