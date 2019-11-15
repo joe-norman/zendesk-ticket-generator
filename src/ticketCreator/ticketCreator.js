@@ -3,12 +3,12 @@
  */
 
 const axios = require('axios');
-const randomTicket = require('randomTicket.js');
+const randomTicket = require('./randomTicket.js');
 
 exports.handler = async (event, context) => {
     console.info(JSON.stringify(event));
 
-    ticket = randomTicket.newTicket();
+    var ticket = randomTicket.newTicket();
     console.log("Ticket generated: " + ticket);
 
     try {

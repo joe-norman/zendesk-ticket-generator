@@ -27,7 +27,7 @@ Parameters:
     Type: String
     Default: ''
   ZendeskUserEmail:
-    Description: Eemail address of the agent that will be making the API calls. Probably should be a service account. Must exist in your Zendesk tenant with appropriate rights.
+    Description: Email address of the agent that will be making the API calls. Probably should be a service account. Must exist in your Zendesk tenant with appropriate rights.
     Type: String
     Default: ''
   ZendeskAPIKey:

@@ -6,7 +6,7 @@
 var randomTicket = {
     newTicket: function() {
         const min = 0;
-        max = 10;
+        const max = 10;
         
         min = Math.ceil(min);
         max = Math.floor(max);
@@ -54,7 +54,7 @@ var randomTicket = {
                 break;
             case 9:
                 subject = "我的猫没有运气，也不再成功喝咖啡";
-                desciption = "亲爱的支持人员，我需要你的帮助。我的猫，通常很幸运，现在不再幸运了。我相信他的运气来自我在他的食物中加入的咖啡渣。但是，咖啡渣使他的食物变得比平常更绿色。您可以发送更少的生咖啡粉吗？ 谢谢， 疯狂的猫家伙";
+                description = "亲爱的支持人员，我需要你的帮助。我的猫，通常很幸运，现在不再幸运了。我相信他的运气来自我在他的食物中加入的咖啡渣。但是，咖啡渣使他的食物变得比平常更绿色。您可以发送更少的生咖啡粉吗？ 谢谢， 疯狂的猫家伙";
                 break;
             default:
                 subject = "Everything is awesome";
