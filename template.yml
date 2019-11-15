@@ -1,5 +1,5 @@
 AWSTemplateFormatVersion: 2010-09-09
-Desciption: zendesk-ticket-generator
+Description: zendesk-ticket-generator
 
 Transform:
 - AWS::Serverless-2016-10-31
@@ -68,16 +68,16 @@ Resources:
 ##########################################################################
 #   Roles                                                                #
 ##########################################################################   
-    ZendeskTicketGeneratorLambdaExecutionRole:
-        Description: Creating service role in IAM for AWS Lambda
-        Type: AWS::IAM::Role
-        Properties:
-          RoleName: 'ZendeskTicketGeneratorLambdaExecutionRole'
-          AssumeRolePolicyDocument:
-            Statement:
-            - Effect: Allow
-              Principal:
-                Service: [lambda.amazonaws.com]
-              Action: sts:AssumeRole
-          ManagedPolicyArns:
-            - !Sub 'arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
+  ZendeskTicketGeneratorLambdaExecutionRole:
+      Description: Creating service role in IAM for AWS Lambda
+      Type: AWS::IAM::Role
+      Properties:
+        RoleName: 'ZendeskTicketGeneratorLambdaExecutionRole'
+        AssumeRolePolicyDocument:
+          Statement:
+          - Effect: Allow
+            Principal:
+              Service: [lambda.amazonaws.com]
+            Action: sts:AssumeRole
+        ManagedPolicyArns:
+          - !Sub 'arn:${AWS::Partition}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole'
