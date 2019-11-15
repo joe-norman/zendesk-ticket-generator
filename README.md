@@ -12,6 +12,7 @@ To deploy this application using the [sam cli](https://docs.aws.amazon.com/serve
 * Download the repo locally
 * Navigate your cli into the root folder of the repo
 * Install Docker and make sure it's running
+    * You can theoretically skip this step, in which case, leave off the --use-container flag in the sam build step
 * Make sure you have the aws cli configured and sam cli installed. ("aws configure") and try "aws s3 ls" to make sure it's working
 * Run "sam build --use-container && sam package <your-bucket-name> --output-template-file packaged.yaml"
     * You can leave off --use-container if you want. Read the sam cli docs for more info.
