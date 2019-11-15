@@ -41,12 +41,12 @@ Resources:
 #######################################################
 # Lambda Functions
 #######################################################  
-  ScheduledEventLogger:
+  ZendeskTicketGenerator:
     Type: AWS::Serverless::Function
     Properties:
       Description: A Lambda function that creates a bulk of fake Zendesk tickets fairly quickly for demos or testing
       Runtime: nodejs10.x
-      Handler: src/ticketCreator/ticketCreator.handler
+      Handler: ticketCreator.handler
       CodeUri: src/ticketCreator
       Events:
         CloudWatchEvent:
